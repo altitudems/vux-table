@@ -1,0 +1,120 @@
+$vui-table-text:                      rgba(0,0,0, .8) !default
+$vui-table-background:                transparent !default
+$vui-table-row-hover-background:      rgba(0,0,0, .0625) !default
+$vui-table-border:                    rgba(0,0,0, .0625) !default
+$vui-table-row-even-background:       rgba(0,0,0, .0625) !default
+$vui-table-row-even-hover-background: rgba(0,0,0, .125) !default
+$vui-table-head:                      rgba(0,0,0, 1) !default
+
+.vui-table
+  background-color: $vui-table-background
+  color: $vui-table-text
+  margin-bottom: 1.5rem
+  width: 100%
+  border-collapse: collapse
+  td,
+  th
+    border: 1px solid $vui-table-border
+    border-width: 0 0 1px
+    padding: 0.5em 0.75em
+    vertical-align: top
+    // Modifiers
+    &.is-narrow
+      white-space: nowrap
+      width: 1%
+  th
+    text-align: left
+    font-weight: normal
+  tr
+    &:hover
+      background-color: $vui-table-row-hover-background
+  thead
+    td,
+    th
+      border-width: 0 0 2px
+      color: $vui-table-head
+  tfoot
+    td,
+    th
+      border-width: 2px 0 0
+      color: $vui-table-head
+  tbody
+    tr
+      &:last-child
+        td,
+        th
+          border-bottom-width: 0
+      &.is-selected
+        td,
+        th
+          background: $vui-table-border
+  // Modifiers
+  &.is-bordered
+    td,
+    th
+      border-width: 1px
+    tr
+      &:last-child
+        td,
+        th
+          border-bottom-width: 1px
+  &.is-narrow
+    td,
+    th
+      padding: 0.25em 0.25em
+      font-size: .875em
+  &.is-striped
+    tbody
+      tr
+        &:nth-child(even)
+          background-color: $vui-table-row-even-background
+          &:hover
+            background-color: $vui-table-row-even-hover-background
+
+
+.vui-table-row
+  &.is-draggable
+    cursor: move
+    min-height: 1em
+  &.sortable-ghost
+    position: relative
+    background: $vui-table-row-even-hover-background
+.vui-table
+  .vui-drag-column, .vui-select-column
+    width: 1px
+    text-align: center
+    vertical-align: middle
+    background: $vui-table-row-even-background
+
+.vui-drag-indicator
+  display: inline-block
+  cursor: move
+  position: relative
+  height: .5em
+  line-height: 0
+  width: 1em
+  opacity: .25
+  &:before
+    content: ''
+    position: absolute
+    left: 0
+    right: 0
+    top: 0
+    bottom: 0
+    border-top: 2px solid currentColor
+    border-bottom: 2px solid currentColor
+
+.vui-column-header
+  &.is-sortable
+    cursor: pointer
+    user-select: none
+  &.is-sortable:after
+    content: '\25bc'
+    vertical-align: middle
+    font-size: .75em
+    margin-left: .5em
+    opacity: .25
+  &.is-sorting:after
+    opacity: 1
+  &.sort-asc:after
+    content: '\25b2'
