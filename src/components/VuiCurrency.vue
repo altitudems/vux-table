@@ -19,3 +19,7 @@ export default {
   }
 }
 </script>
+
+<style>
+  /* No styles */
+</style>

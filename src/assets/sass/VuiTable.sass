@@ -5,6 +5,7 @@ $vui-table-border:                    rgba(0,0,0, .0625) !default
 $vui-table-row-even-background:       rgba(0,0,0, .0625) !default
 $vui-table-row-even-hover-background: rgba(0,0,0, .125) !default
 $vui-table-head:                      rgba(0,0,0, 1) !default
+$vui-table-editing-background:        hsla(200, 80, 60, .5) !default
 
 .vui-table
   background-color: $vui-table-background
@@ -48,7 +49,14 @@ $vui-table-head:                      rgba(0,0,0, 1) !default
         td,
         th
           background: $vui-table-border
-  // Modifiers
+      &.is-edited
+        td,
+        th
+          font-style: italic
+      &.is-editing
+        td,
+        th
+          background: $vui-table-editing-background
   &.is-bordered
     td,
     th

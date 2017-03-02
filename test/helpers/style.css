@@ -17,10 +17,6 @@
   overflow: visible;
 }
 
-.test-dom-container {
-  font: initial;
-}
-
 #mocha .test-dom-container--hidden {
   padding: 0;
   border: 0;

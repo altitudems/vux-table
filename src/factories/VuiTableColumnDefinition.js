@@ -10,7 +10,8 @@ export default function VuiTableColumnDefinition (options) {
       sortDirection: 'desc',
       isFilterable: false,
       displayComponent: null,
-      editComponent: null
+      editComponent: null,
+      span: 1
     },
     ...options
   }

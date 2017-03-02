@@ -23,7 +23,7 @@
     },
     methods: {
       onClick () {
-        if (this.value.isSortable) this.$emit('vui-column-header-click', this.value)
+        if (this.value.isSortable) this.$emit('column-header-click', this.value)
       }
     }
   }
@@ -32,19 +32,22 @@
 <style>
   .vui-column-header.is-sortable {
     cursor: pointer;
-    user-select: none
+    user-select: none;
   }
-  .vui-column-header.is-sortable:after {
+
+  .vui-column-header.is-sortable::after {
     content: '\25bc';
     vertical-align: middle;
-    font-size: .75em;
-    margin-left: .5em;
-    opacity: .25;
+    font-size: 0.75em;
+    margin-left: 0.5em;
+    opacity: 0.25;
   }
-  .vui-column-header.is-sorting:after {
+
+  .vui-column-header.is-sorting::after {
     opacity: 1;
   }
-  .vui-column-header.sort-asc:after {
+
+  .vui-column-header.sort-asc::after {
     content: '\25b2';
   }
 </style>

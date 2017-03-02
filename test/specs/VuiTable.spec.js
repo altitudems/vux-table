@@ -1,4 +1,7 @@
 import VuiTable from 'src/VuiTable.vue'
+import VuiRow from 'src/components/VuiRow.vue'
+import VuiColumn from 'src/components/VuiColumn.vue'
+import VuiTextInput from 'src/components/VuiTextInput.vue'
 import VuiTableColumnDefinition from 'src/factories/VuiTableColumnDefinition'
 import { expect } from 'chai'
 import { createVM } from '../helpers/utils.js'
@@ -15,7 +18,7 @@ export function createHeroes () {
 export function createColumns () {
   return [
     VuiTableColumnDefinition({ label: 'Id', isHidden: true }),
-    VuiTableColumnDefinition({ key: 'name', label: 'Name', isSorting: true, isSortable: true, sortDirection: 'desc' }),
+    VuiTableColumnDefinition({ key: 'name', label: 'Name', isSorting: true, isSortable: true, sortDirection: 'desc', editComponent: VuiTextInput }),
     VuiTableColumnDefinition({ key: 'cost', label: 'Recruitment Cost' }),
     VuiTableColumnDefinition({ key: 'stamina', label: 'Stamina', isSortable: true }),
     VuiTableColumnDefinition({ key: 'power', label: 'Power' })
@@ -34,16 +37,30 @@ const heroesTableTemplate = `
     :use-default-sorting="true"
     :is-bordered="false"
     :is-striped="false"
-    :is-narrow="true"
+    :is-narrow="false"
     :draggableOptions="{group:'heroes'}"
   >
     <template slot="row-actions-column" scope="props">
-      <button v-if="!props.isEditing">Edit {{props.record.id}}</button>
-      <button v-else>Save {{props.record.id}}</button>
-      <span v-show="props.isSelected">Selected</span>
+      <th>
+        <button v-if="!props.isEditing" @click="props.edit(props.row)">Edit</button>
+        <button v-if="!props.isEditing" @click="props.delete(props.row)">Delete</button>
+        <button v-if="props.isEditing" @click="props.save(props.row)">Save</button>
+        <button v-if="props.isEditing" @click="props.revert(props.row)">Cancel</button>
+      </th>
     </template>
-    <tr>
+
+    <vui-row>
+      <vui-column span="12" value="Custom VuiColumn"></vui-column>
+    </vui-row>
+
+    <tr slot="thead">
+      <td colspan="100">Custom header row</td>
+    </tr>
+    <tr slot="tbody">
       <td colspan="100">Custom body row</td>
+    </tr>
+    <tr slot="tfoot">
+      <td colspan="100">Custom footer row</td>
     </tr>
   </vui-table>
 `
@@ -54,13 +71,13 @@ describe('VuiTable.vue', function () {
       this,
       heroesTableTemplate,
       {
-        components: { VuiTable },
+        components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
         data: { heroes: createHeroes(), columns: createColumns(), visible: true }
       }
     )
     vm.$el.should.be.ok
     vm.$el.querySelector('table.vui-table').should.exist
-    vm.$el.querySelector('table.vui-table').getElementsByTagName('tr').length.should.equal(6)
+    vm.$el.querySelector('table.vui-table tbody').getElementsByTagName('tr').length.should.equal(6)
   })
 
   it('should hide hidden columns', function () {
@@ -68,11 +85,11 @@ describe('VuiTable.vue', function () {
       this,
       heroesTableTemplate,
       {
-        components: { VuiTable },
+        components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
         data: { heroes: createHeroes(), columns: createColumns(), visible: true }
       }
     )
-    vm.$el.querySelectorAll('table.vui-table thead th').length.should.equal(5)
+    vm.$el.querySelectorAll('table.vui-table thead th').length.should.equal(6)
   })
 
   it('should sort by column values after mount', function () {
@@ -80,7 +97,7 @@ describe('VuiTable.vue', function () {
       this,
       heroesTableTemplate,
       {
-        components: { VuiTable },
+        components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
         data: { heroes: createHeroes(), columns: createColumns(), visible: true }
       }
     )
@@ -92,7 +109,7 @@ describe('VuiTable.vue', function () {
   //     this,
   //     heroesTableTemplate,
   //     {
-  //       components: { VuiTable },
+  //       components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
   //       data: { heroes: createHeroes(), columns: createColumns(), visible: true }
   //     }
   //   )
@@ -117,7 +134,7 @@ describe('VuiTable.vue', function () {
           this,
           heroesTableTemplate,
           {
-            components: { VuiTable },
+            components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
             data: { heroes: createHeroes(), columns: createColumns(), visible: true }
           }
         )

@@ -1,25 +1,37 @@
 <template lang="pug">
-  tr(v-if="value", class="vui-table-row", :class="{ 'is-selected': isSelected }")
-    th.vui-select-column(v-if="isSelectable")
+  tr(class="vui-table-row", :class="{ 'is-selected': isSelected, 'is-editing': isEditing, 'is-edited': isEdited  }")
+    th.vui-select-column(v-if="isSelectable && value")
       input(type="checkbox", :checked="isSelected", @click="$emit('row-select-toggle', value)")
-    td(v-for="column in columns", v-if="!column.isHidden")
-      vui-cell(v-model="value[column.key]", :column="column")
-    td
-      slot
+    template(v-for="column in columns", v-if="!column.isHidden")
+      vui-column(
+        :value="dirtyValue ? dirtyValue[column.key] : value[column.key]",
+        :isEditing="isEditing",
+        :displayComponent="column.displayComponent",
+        :editComponent="column.editComponent",
+        :span="column.span",
+        @input="onColumnInput($event, value[column.key], column)"
+      )
+    slot
 </template>
 
 <script>
-  import VuiCell from './VuiCell'
+  import VuiColumn from './VuiColumn'
 
   export default {
     name: 'VuiRow',
     props: {
       value: {
-        type: Object
+        type: Object,
+        required: false
+      },
+      dirtyValue: {
+        type: Object,
+        required: false
       },
       columns: {
         type: Array,
-        required: true
+        required: false,
+        default: () => []
       },
       isEditable: {
         type: Boolean,
@@ -38,6 +50,20 @@
         default: false
       }
     },
-    components: { VuiCell }
+    computed: {
+      isEdited () { return typeof this.dirtyValue !== 'undefined' && this.dirtyValue !== null }
+    },
+    methods: {
+      onColumnInput (newValue, oldValue, column) {
+        const dirtyValue = { ...this.value }
+        dirtyValue[column.key] = newValue
+        this.$emit('input', dirtyValue)
+      }
+    },
+    components: { VuiColumn }
   }
 </script>
+
+<style>
+  /* No styles */
+</style>
