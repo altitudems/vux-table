@@ -1,6 +1,6 @@
 {
   "name": "vux-table",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "VUXTable - A Vue.js Table Component",
   "author": "David Hayes <david@altitude-studios.com>",
   "main": "dist/vux-table.common.js",
@@ -11,9 +11,9 @@
     "dist",
     "src"
   ],
-  "repository" :
-    { "type" : "git"
-    , "url" : "https://github.com/altitudems/vux-table.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/altitudems/vux-table.git"
   },
   "scripts": {
     "clean": "rimraf dist",
