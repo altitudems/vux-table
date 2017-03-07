@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'vui-text',
+  name: 'vux-text',
   props: {
     value: {
       required: false,

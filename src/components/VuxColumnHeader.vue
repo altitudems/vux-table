@@ -1,10 +1,10 @@
 <template lang="pug">
-  .vui-column-header(:class="columnClass", @click="onClick") {{value.label}}
+  .vux-column-header(:class="columnClass", @click="onClick") {{value.label}}
 </template>
 
 <script>
   export default {
-    name: 'VuiColumnHeader',
+    name: 'VuxColumnHeader',
     props: {
       value: {
         type: Object,
@@ -30,12 +30,12 @@
 </script>
 
 <style>
-  .vui-column-header.is-sortable {
+  .vux-column-header.is-sortable {
     cursor: pointer;
     user-select: none;
   }
 
-  .vui-column-header.is-sortable::after {
+  .vux-column-header.is-sortable::after {
     content: '\25bc';
     vertical-align: middle;
     font-size: 0.75em;
@@ -43,11 +43,11 @@
     opacity: 0.25;
   }
 
-  .vui-column-header.is-sorting::after {
+  .vux-column-header.is-sorting::after {
     opacity: 1;
   }
 
-  .vui-column-header.sort-asc::after {
+  .vux-column-header.sort-asc::after {
     content: '\25b2';
   }
 </style>

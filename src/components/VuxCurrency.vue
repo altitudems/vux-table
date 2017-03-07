@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'vui-currency',
+  name: 'vux-currency',
   props: {
     value: {
       required: false,

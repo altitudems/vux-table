@@ -1,8 +1,8 @@
-import VuiTable from 'src/VuiTable.vue'
-import VuiRow from 'src/components/VuiRow.vue'
-import VuiColumn from 'src/components/VuiColumn.vue'
-import VuiTextInput from 'src/components/VuiTextInput.vue'
-import VuiTableColumnDefinition from 'src/factories/VuiTableColumnDefinition'
+import VuxTable from 'src/VuxTable.vue'
+import VuxRow from 'src/components/VuxRow.vue'
+import VuxColumn from 'src/components/VuxColumn.vue'
+import VuxTextInput from 'src/components/VuxTextInput.vue'
+import VuxTableColumnDefinition from 'src/factories/VuxTableColumnDefinition'
 import { expect } from 'chai'
 import { createVM } from '../helpers/utils.js'
 
@@ -17,16 +17,16 @@ export function createHeroes () {
 
 export function createColumns () {
   return [
-    VuiTableColumnDefinition({ label: 'Id', isHidden: true }),
-    VuiTableColumnDefinition({ key: 'name', label: 'Name', isSorting: true, isSortable: true, sortDirection: 'desc', editComponent: VuiTextInput }),
-    VuiTableColumnDefinition({ key: 'cost', label: 'Recruitment Cost' }),
-    VuiTableColumnDefinition({ key: 'stamina', label: 'Stamina', isSortable: true }),
-    VuiTableColumnDefinition({ key: 'power', label: 'Power' })
+    VuxTableColumnDefinition({ label: 'Id', isHidden: true }),
+    VuxTableColumnDefinition({ key: 'name', label: 'Name', isSorting: true, isSortable: true, sortDirection: 'desc', editComponent: VuxTextInput }),
+    VuxTableColumnDefinition({ key: 'cost', label: 'Recruitment Cost' }),
+    VuxTableColumnDefinition({ key: 'stamina', label: 'Stamina', isSortable: true }),
+    VuxTableColumnDefinition({ key: 'power', label: 'Power' })
   ]
 }
 
 const heroesTableTemplate = `
-  <vui-table
+  <vux-table
     ref="component"
     v-model="heroes"
     :columns="columns"
@@ -48,22 +48,22 @@ const heroesTableTemplate = `
         <button v-if="props.isEditing" @click="props.revert(props.row)">Cancel</button>
       </th>
     </template>
-  </vui-table>
+  </vux-table>
 `
 
-describe('VuiTable.vue', function () {
+describe('VuxTable.vue', function () {
   it('should render table', function () {
     const vm = createVM(
       this,
       heroesTableTemplate,
       {
-        components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
+        components: { VuxTable, VuxRow, VuxColumn, VuxTextInput },
         data: { heroes: createHeroes(), columns: createColumns(), visible: true }
       }
     )
     vm.$el.should.be.ok
-    vm.$el.querySelector('table.vui-table').should.exist
-    vm.$el.querySelector('table.vui-table tbody').getElementsByTagName('tr').length.should.equal(4)
+    vm.$el.querySelector('table.vux-table').should.exist
+    vm.$el.querySelector('table.vux-table tbody').getElementsByTagName('tr').length.should.equal(4)
   })
 
   it('should hide hidden columns', function () {
@@ -71,11 +71,11 @@ describe('VuiTable.vue', function () {
       this,
       heroesTableTemplate,
       {
-        components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
+        components: { VuxTable, VuxRow, VuxColumn, VuxTextInput },
         data: { heroes: createHeroes(), columns: createColumns(), visible: true }
       }
     )
-    vm.$el.querySelectorAll('table.vui-table thead th').length.should.equal(6)
+    vm.$el.querySelectorAll('table.vux-table thead th').length.should.equal(6)
   })
 
   it('should sort by column values after mount', function () {
@@ -83,11 +83,11 @@ describe('VuiTable.vue', function () {
       this,
       heroesTableTemplate,
       {
-        components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
+        components: { VuxTable, VuxRow, VuxColumn, VuxTextInput },
         data: { heroes: createHeroes(), columns: createColumns(), visible: true }
       }
     )
-    vm.$el.querySelectorAll('table.vui-table tbody td')[0].textContent.should.equal('Bruce Lee')
+    vm.$el.querySelectorAll('table.vux-table tbody td')[0].textContent.should.equal('Bruce Lee')
   })
 
   // it('should select row and emit event', function () {
@@ -95,16 +95,16 @@ describe('VuiTable.vue', function () {
   //     this,
   //     heroesTableTemplate,
   //     {
-  //       components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
+  //       components: { VuxTable, VuxRow, VuxColumn, VuxTextInput },
   //       data: { heroes: createHeroes(), columns: createColumns(), visible: true }
   //     }
   //   )
 
   //   let payload = null
 
-  //   vm.$refs.component.$on('vui-row-selection-change', (p) => { payload = p })
-  //   vm.$el.querySelectorAll('table.vui-table tbody th input')[0].click()
-  //   vm.$el.querySelectorAll('table.vui-table tbody th input')[3].click()
+  //   vm.$refs.component.$on('vux-row-selection-change', (p) => { payload = p })
+  //   vm.$el.querySelectorAll('table.vux-table tbody th input')[0].click()
+  //   vm.$el.querySelectorAll('table.vux-table tbody th input')[3].click()
 
   //   vm.$refs.component.$nextTick(() => {
   //     payload.should.exist
@@ -112,7 +112,7 @@ describe('VuiTable.vue', function () {
   //   })
   // })
   describe('Events emitting', function () {
-    describe('@vui-row-selection-change', function () {
+    describe('@vux-row-selection-change', function () {
       it('should be called after selecting any row', function (done) {
         const eventsLog = []
 
@@ -120,14 +120,14 @@ describe('VuiTable.vue', function () {
           this,
           heroesTableTemplate,
           {
-            components: { VuiTable, VuiRow, VuiColumn, VuiTextInput },
+            components: { VuxTable, VuxRow, VuxColumn, VuxTextInput },
             data: { heroes: createHeroes(), columns: createColumns(), visible: true }
           }
         )
 
-        vm.$refs.component.$on('vui-row-selection-change', (p) => { eventsLog.push(p) })
+        vm.$refs.component.$on('vux-row-selection-change', (p) => { eventsLog.push(p) })
 
-        vm.$el.querySelectorAll('table.vui-table tbody th input')[0].click()
+        vm.$el.querySelectorAll('table.vux-table tbody th input')[0].click()
 
         vm.$nextTick(() => {
           expect(eventsLog).to.exist

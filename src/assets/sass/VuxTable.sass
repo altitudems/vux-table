@@ -1,21 +1,21 @@
-$vui-table-text:                      rgba(0,0,0, .8) !default
-$vui-table-background:                transparent !default
-$vui-table-row-hover-background:      rgba(0,0,0, .0625) !default
-$vui-table-border:                    rgba(0,0,0, .0625) !default
-$vui-table-row-even-background:       rgba(0,0,0, .0625) !default
-$vui-table-row-even-hover-background: rgba(0,0,0, .125) !default
-$vui-table-head:                      rgba(0,0,0, 1) !default
-$vui-table-editing-background:        hsla(200, 80, 60, .5) !default
+$vux-table-text:                      rgba(0,0,0, .8) !default
+$vux-table-background:                transparent !default
+$vux-table-row-hover-background:      rgba(0,0,0, .0625) !default
+$vux-table-border:                    rgba(0,0,0, .0625) !default
+$vux-table-row-even-background:       rgba(0,0,0, .0625) !default
+$vux-table-row-even-hover-background: rgba(0,0,0, .125) !default
+$vux-table-head:                      rgba(0,0,0, 1) !default
+$vux-table-editing-background:        hsla(200, 80, 60, .5) !default
 
-.vui-table
-  background-color: $vui-table-background
-  color: $vui-table-text
+.vux-table
+  background-color: $vux-table-background
+  color: $vux-table-text
   margin-bottom: 1.5rem
   width: 100%
   border-collapse: collapse
   td,
   th
-    border: 1px solid $vui-table-border
+    border: 1px solid $vux-table-border
     border-width: 0 0 1px
     padding: 0.5em 0.75em
     vertical-align: top
@@ -28,17 +28,17 @@ $vui-table-editing-background:        hsla(200, 80, 60, .5) !default
     font-weight: normal
   tr
     &:hover
-      background-color: $vui-table-row-hover-background
+      background-color: $vux-table-row-hover-background
   thead
     td,
     th
       border-width: 0 0 2px
-      color: $vui-table-head
+      color: $vux-table-head
   tfoot
     td,
     th
       border-width: 2px 0 0
-      color: $vui-table-head
+      color: $vux-table-head
   tbody
     tr
       &:last-child
@@ -48,7 +48,7 @@ $vui-table-editing-background:        hsla(200, 80, 60, .5) !default
       &.is-selected
         td,
         th
-          background: $vui-table-border
+          background: $vux-table-border
       &.is-edited
         td,
         th
@@ -56,7 +56,7 @@ $vui-table-editing-background:        hsla(200, 80, 60, .5) !default
       &.is-editing
         td,
         th
-          background: $vui-table-editing-background
+          background: $vux-table-editing-background
   &.is-bordered
     td,
     th
@@ -75,26 +75,26 @@ $vui-table-editing-background:        hsla(200, 80, 60, .5) !default
     tbody
       tr
         &:nth-child(even)
-          background-color: $vui-table-row-even-background
+          background-color: $vux-table-row-even-background
           &:hover
-            background-color: $vui-table-row-even-hover-background
+            background-color: $vux-table-row-even-hover-background
 
 
-.vui-table-row
+.vux-table-row
   &.is-draggable
     cursor: move
     min-height: 1em
   &.sortable-ghost
     position: relative
-    background: $vui-table-row-even-hover-background
-.vui-table
-  .vui-drag-column, .vui-select-column
+    background: $vux-table-row-even-hover-background
+.vux-table
+  .vux-drag-column, .vux-select-column
     width: 1px
     text-align: center
     vertical-align: middle
-    background: $vui-table-row-even-background
+    background: $vux-table-row-even-background
 
-.vui-drag-indicator
+.vux-drag-indicator
   display: inline-block
   cursor: move
   position: relative
@@ -112,7 +112,7 @@ $vui-table-editing-background:        hsla(200, 80, 60, .5) !default
     border-top: 2px solid currentColor
     border-bottom: 2px solid currentColor
 
-.vui-column-header
+.vux-column-header
   &.is-sortable
     cursor: pointer
     user-select: none

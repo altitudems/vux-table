@@ -1,19 +1,19 @@
 <template lang="pug">
-  .vui-table-container
-    table.vui-table(
+  .vux-table-container
+    table.vux-table(
       :class="{ 'is-bordered': isBordered, 'is-striped': isStriped, 'is-narrow': isNarrow }"
     )
       thead
         tr
-          th.vui-select-column(v-if="isSelectable")
+          th.vux-select-column(v-if="isSelectable")
             input(type="checkbox", :checked="selectedRowKeys.length === value.length", @click="toggleAllRowSelections")
           th(v-for="column in columns", v-if="!column.isHidden")
-            vui-column-header(:value="column", @column-header-click="onColumnHeaderClick")
-          th.vui-actions-column(v-if="$scopedSlots['row-actions-column']")
+            vux-column-header(:value="column", @column-header-click="onColumnHeaderClick")
+          th.vux-actions-column(v-if="$scopedSlots['row-actions-column']")
             | {{actionsLabel}}
         slot(name="thead")
       tbody
-        vui-row(
+        vux-row(
           v-for="record in value",
           :key="valueKey",
           :value="record",
@@ -54,12 +54,12 @@
 </template>
 
 <script>
-  import VuiColumnHeader from './components/VuiColumnHeader'
-  import VuiRow from './components/VuiRow'
+  import VuxColumnHeader from './components/VuxColumnHeader'
+  import VuxRow from './components/VuxRow'
   import { sortAlphaNumeric } from './helpers/sort.js'
 
   export default {
-    components: { VuiColumnHeader, VuiRow },
+    components: { VuxColumnHeader, VuxRow },
     props: {
       columns: {
         type: Array,

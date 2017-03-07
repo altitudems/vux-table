@@ -1,7 +1,7 @@
-import VuiTable from './VuiTable.vue'
+import VuxTable from './VuxTable.vue'
 
 function plugin (Vue) {
-  Vue.component('vui-table', VuiTable)
+  Vue.component('vux-table', VuxTable)
 }
 
 // Install by default if using the script tag
@@ -13,6 +13,6 @@ export default plugin
 const version = '__VERSION__'
 // Export all components too
 export {
-  VuiTable,
+  VuxTable,
   version
 }

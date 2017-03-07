@@ -1,4 +1,4 @@
-export default function VuiTableColumnDefinition (options) {
+export default function VuxTableColumnDefinition (options) {
   return {
     ...{
       key: 'id',

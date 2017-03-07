@@ -1,9 +1,9 @@
 <template lang="pug">
-  tr(class="vui-table-row", :class="{ 'is-selected': isSelected, 'is-editing': isEditing, 'is-edited': isEdited  }")
-    th.vui-select-column(v-if="isSelectable && value")
+  tr(class="vux-table-row", :class="{ 'is-selected': isSelected, 'is-editing': isEditing, 'is-edited': isEdited  }")
+    th.vux-select-column(v-if="isSelectable && value")
       input(type="checkbox", :checked="isSelected", @click="$emit('row-select-toggle', value)")
     template(v-for="column in columns", v-if="!column.isHidden")
-      vui-column(
+      vux-column(
         :value="dirtyValue ? dirtyValue[column.key] : value[column.key]",
         :isEditing="isEditing",
         :displayComponent="column.displayComponent",
@@ -15,10 +15,10 @@
 </template>
 
 <script>
-  import VuiColumn from './VuiColumn'
+  import VuxColumn from './VuxColumn'
 
   export default {
-    name: 'VuiRow',
+    name: 'VuxRow',
     props: {
       value: {
         type: Object,
@@ -60,7 +60,7 @@
         this.$emit('input', dirtyValue)
       }
     },
-    components: { VuiColumn }
+    components: { VuxColumn }
   }
 </script>
 

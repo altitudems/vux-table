@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'vui-text-input',
+  name: 'vux-text-input',
   props: {
     value: {
       required: false,

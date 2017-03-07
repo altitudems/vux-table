@@ -1,7 +1,7 @@
 /* global requestAnimationFrame */
 import 'style-loader!css-loader!mocha-css'
 import 'style-loader!css-loader!./helpers/style.css'
-import 'style-loader!css-loader!sass-loader!../src/assets/sass/VuiTable.sass'
+import 'style-loader!css-loader!sass-loader!../src/assets/sass/VuxTable.sass'
 
 // create a div where mocha can add its stuff
 const mochaDiv = document.createElement('DIV')
