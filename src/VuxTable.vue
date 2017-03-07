@@ -290,3 +290,7 @@
     }
   }
 </script>
+
+<script>
+  // Empty
+</script>
