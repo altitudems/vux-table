@@ -11,6 +11,10 @@
     "dist",
     "src"
   ],
+  "repository" :
+    { "type" : "git"
+    , "url" : "https://github.com/altitudems/vux-table.git"
+  },
   "scripts": {
     "clean": "rimraf dist",
     "build": "yon run build:common && yon run build:browser && yon run build:browser:min",
