@@ -48,20 +48,6 @@ const heroesTableTemplate = `
         <button v-if="props.isEditing" @click="props.revert(props.row)">Cancel</button>
       </th>
     </template>
-
-    <vui-row>
-      <vui-column span="12" value="Custom VuiColumn"></vui-column>
-    </vui-row>
-
-    <tr slot="thead">
-      <td colspan="100">Custom header row</td>
-    </tr>
-    <tr slot="tbody">
-      <td colspan="100">Custom body row</td>
-    </tr>
-    <tr slot="tfoot">
-      <td colspan="100">Custom footer row</td>
-    </tr>
   </vui-table>
 `
 
@@ -77,7 +63,7 @@ describe('VuiTable.vue', function () {
     )
     vm.$el.should.be.ok
     vm.$el.querySelector('table.vui-table').should.exist
-    vm.$el.querySelector('table.vui-table tbody').getElementsByTagName('tr').length.should.equal(6)
+    vm.$el.querySelector('table.vui-table tbody').getElementsByTagName('tr').length.should.equal(4)
   })
 
   it('should hide hidden columns', function () {

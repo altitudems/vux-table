@@ -248,12 +248,15 @@
           // If row has changed, perform revert
           const dirtyRow = this.getDirtyValueForRow(row)
 
+          console.log(dirtyRow)
+
           if (dirtyRow) {
             // Find existing record
-            const dirtyIndex = this.dirtyValue.findIndex(v => v[this.valueKey] === dirtyRow[this.valueKey])
+            const dirtyIndex = this.dirtyValue.findIndex(v => v[this.valueKey] === row[this.valueKey])
+            console.log(dirtyIndex)
             if (dirtyIndex > -1) {
               // Remove dirty record
-              this.dirtyValue = this.dirtyValue.splice(dirtyIndex, 1)
+              this.dirtyValue.splice(dirtyIndex, 1)
             }
           }
         }

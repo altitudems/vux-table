@@ -1,13 +1,15 @@
-# VuiTable
+# VUXTable
 
-[![npm](https://img.shields.io/npm/v/vui-table.svg)](https://www.npmjs.com/package/vui-table) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
+[![npm](https://img.shields.io/npm/v/vux-table.svg)](https://www.npmjs.com/package/vux-table) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
 
-> A Vue.js Plugin
+> A Vue.js Table Component
+
+# Work-In-Progress!
 
 ## Installation
 
 ```bash
-npm install --save vui-table
+npm install --save vux-table
 ```
 
 ## Usage
@@ -16,9 +18,9 @@ npm install --save vui-table
 
 ```js
 import Vue from 'vue'
-import VuiTable from 'vui-table'
+import VuiTable from 'vux-table'
 // You need a specific loader for CSS files like https://github.com/webpack/css-loader
-import 'vui-table/dist/vui-table.css'
+import 'vux-table/dist/vux-table.css'
 
 Vue.use(VuiTable)
 ```
@@ -28,12 +30,12 @@ Vue.use(VuiTable)
 ```html
 <!-- Include after Vue -->
 <!-- Local files -->
-<link rel="stylesheet" href="vui-table/dist/vui-table.css"></link>
-<script src="vui-table/dist/vui-table.js"></script>
+<link rel="stylesheet" href="vux-table/dist/vux-table.css"></link>
+<script src="vux-table/dist/vux-table.js"></script>
 
 <!-- From CDN -->
-<link rel="stylesheet" href="https://unpkg.com/vui-table/dist/vui-table.css"></link>
-<script src="https://unpkg.com/vui-table"></script>
+<link rel="stylesheet" href="https://unpkg.com/vux-table/dist/vux-table.css"></link>
+<script src="https://unpkg.com/vux-table"></script>
 ```
 
 ## Development

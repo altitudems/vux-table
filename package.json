@@ -1,12 +1,12 @@
 {
-  "name": "vui-table",
-  "version": "0.0.0",
-  "description": "A Vue.js Plugin",
+  "name": "vux-table",
+  "version": "0.1.0",
+  "description": "VUXTable - A Vue.js Table Component",
   "author": "David Hayes <david@altitude-studios.com>",
-  "main": "dist/vui-table.common.js",
-  "browser": "dist/vui-table.js",
-  "unpkg": "dist/vui-table.js",
-  "style": "dist/vui-table.css",
+  "main": "dist/vux-table.common.js",
+  "browser": "dist/vux-table.js",
+  "unpkg": "dist/vux-table.js",
+  "style": "dist/vux-table.css",
   "files": [
     "dist",
     "src"
