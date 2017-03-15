@@ -286,11 +286,12 @@
       }
     },
     created () {
+      console.log(this)
       this.sort()
     }
   }
 </script>
 
-<script>
-  // Empty
-</script>
+<style>
+  /* No styles */
+</style>
