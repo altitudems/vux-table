@@ -33,12 +33,10 @@ const heroesTableTemplate = `
     value-key="id"
     :is-editable="true"
     :is-selectable="true"
-    :is-draggable="true"
     :use-default-sorting="true"
     :is-bordered="false"
     :is-striped="false"
     :is-narrow="false"
-    :draggableOptions="{group:'heroes'}"
   >
     <template slot="row-actions-column" scope="props">
       <th>
